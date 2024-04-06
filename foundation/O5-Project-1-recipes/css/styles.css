@@ -1,0 +1,16 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #f3f3f3;
+}
+
+h1 {
+  color: red;
+}
+
+hr {
+  border: 3px solid rgb(249, 213, 8);
+}
+
+a:link {
+  text-decoration: none;
+}
