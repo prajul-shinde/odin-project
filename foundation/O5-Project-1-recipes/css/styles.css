@@ -1,16 +1,42 @@
 * {
+  box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: #f3f3f3;
+  background-color: #e5e7eb;
+  margin: 0;
+  padding: 0;
 }
 
-h1 {
-  color: red;
+ol {
+  list-style: none;
+}
+
+ol li {
+  margin-bottom: 8px;
 }
 
 hr {
   border: 3px solid rgb(249, 213, 8);
 }
 
-a:link {
+a {
   text-decoration: none;
+  color: black;
+  padding: 8px 24px;
+  border: 1px solid grey;
+  display: inline-block;
+  border-radius: 10px;
+}
+
+a:hover {
+  background-color: black;
+  color: white;
+}
+
+.list {
+  margin-top: 20px;
+}
+
+.container {
+  margin-top: 20px;
+  margin-left: 20px;
 }
