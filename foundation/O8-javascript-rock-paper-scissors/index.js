@@ -42,15 +42,33 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function playGame() {
-  for (let i = 0; i < 5; i++) {
-    const playerSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection.toLowerCase(), computerSelection));
-  }
+  const computerSelection = getComputerChoice();
+  const buttons = document.querySelectorAll(".btn");
+  let result = "";
+  const container = document.querySelector("#container");
+  const resultDiv = document.createElement("div");
+  const runninScore = document.createElement("p");
+  const resultPara = document.createElement("p");
+  const winner = document.createElement("p");
+  resultDiv.appendChild(runninScore);
+  resultDiv.appendChild(resultPara);
+  resultDiv.appendChild(winner);
+  container.appendChild(resultDiv);
 
-  console.log(
-    `after 5 rounds score is player = ${humanScore} and computer = ${computerScore}`
-  );
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      result = playRound(button.textContent, computerSelection);
+      runninScore.textContent = `you: ${humanScore} computer: ${computerScore}`;
+      resultPara.textContent = result;
+      if (humanScore === 5 || computerScore === 5) {
+        winner.textContent = `winner is ${
+          humanScore > computerScore ? "player" : "computer"
+        }`;
+        humanScore = 0;
+        computerScore = 0;
+      }
+    });
+  });
 }
 
 playGame();
