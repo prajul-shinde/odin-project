@@ -41,34 +41,30 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function playGame() {
-  const computerSelection = getComputerChoice();
-  const buttons = document.querySelectorAll(".btn");
-  let result = "";
-  const container = document.querySelector("#container");
-  const resultDiv = document.createElement("div");
-  const runninScore = document.createElement("p");
-  const resultPara = document.createElement("p");
-  const winner = document.createElement("p");
-  resultDiv.appendChild(runninScore);
-  resultDiv.appendChild(resultPara);
-  resultDiv.appendChild(winner);
-  container.appendChild(resultDiv);
+const buttons = document.querySelectorAll(".btn");
+const container = document.querySelector("#container");
+const resultDiv = document.createElement("div");
+const runninScore = document.createElement("p");
+const resultPara = document.createElement("p");
+const winner = document.createElement("p");
+resultDiv.appendChild(runninScore);
+resultDiv.appendChild(resultPara);
+resultDiv.appendChild(winner);
+container.appendChild(resultDiv);
 
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      result = playRound(button.textContent, computerSelection);
-      runninScore.textContent = `you: ${humanScore} computer: ${computerScore}`;
-      resultPara.textContent = result;
-      if (humanScore === 5 || computerScore === 5) {
-        winner.textContent = `winner is ${
-          humanScore > computerScore ? "player" : "computer"
-        }`;
-        humanScore = 0;
-        computerScore = 0;
-      }
-    });
+let result = "";
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const computerSelection = getComputerChoice();
+    result = playRound(button.textContent, computerSelection);
+    runninScore.textContent = `you: ${humanScore} computer: ${computerScore}`;
+    resultPara.textContent = result;
+    if (humanScore === 5 || computerScore === 5) {
+      winner.textContent = `winner is ${
+        humanScore > computerScore ? "player" : "computer"
+      }`;
+      humanScore = 0;
+      computerScore = 0;
+    }
   });
-}
-
-playGame();
+});
