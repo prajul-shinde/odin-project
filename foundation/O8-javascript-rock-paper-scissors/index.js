@@ -44,13 +44,20 @@ function playRound(playerSelection, computerSelection) {
 const buttons = document.querySelectorAll(".btn");
 const container = document.querySelector("#container");
 const resultDiv = document.createElement("div");
+resultDiv.classList.add("result");
+const winnerDiv = document.createElement("div");
+winnerDiv.classList.add("winner");
+const runnigScoreDiv = document.createElement("div");
+runnigScoreDiv.classList.add("current-score");
 const runninScore = document.createElement("p");
 const resultPara = document.createElement("p");
-const winner = document.createElement("p");
-resultDiv.appendChild(runninScore);
+const winnerPara = document.createElement("p");
+runnigScoreDiv.appendChild(runninScore);
 resultDiv.appendChild(resultPara);
-resultDiv.appendChild(winner);
+winnerDiv.appendChild(winnerPara);
+container.appendChild(runnigScoreDiv);
 container.appendChild(resultDiv);
+container.appendChild(winnerDiv);
 
 let result = "";
 buttons.forEach((button) => {
@@ -60,7 +67,7 @@ buttons.forEach((button) => {
     runninScore.textContent = `you: ${humanScore} computer: ${computerScore}`;
     resultPara.textContent = result;
     if (humanScore === 5 || computerScore === 5) {
-      winner.textContent = `winner is ${
+      winnerPara.textContent = `winner is ${
         humanScore > computerScore ? "player" : "computer"
       }`;
       humanScore = 0;
